@@ -1,0 +1,107 @@
+@charset "utf-8";
+:root {
+  --mainWidth: 100%;
+}
+
+body {
+  position: relative;
+  font-family: Montserrat, "Noto Sans JP", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", 游ゴシック, YuGothic, "Yu Gothic", メイリオ, Meiryo, Verdana, sans-serif;
+  font-size: 62.5%;
+  width: var(--mainWidth);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  z-index: 0;
+}
+.update {
+  line-height    : 60px;                /* 1行の高さ          */
+  letter-spacing : 0;                   /* 文字間             */
+  text-align     : center;              /* 文字位置は中央     */
+  font-size      : 27px;                /* 文字サイズ         */
+
+  position       : relative;            /* 親要素が基点       */
+  width          : 150px;               /* ボタンの横幅       */
+  background     : #fff;                /* デフォルト背景色   */
+}
+.update input[type=checkbox] {
+  display: none;
+}
+.update label {
+  display        : block;               /* ボックス要素に変更 */
+  box-sizing     : border-box;          /* 枠線を含んだサイズ */
+  height         : 60px;                /* ボタンの高さ       */
+  border         : 2px solid #999999;   /* 未選択タブのの枠線 */
+  border-radius  : 30px;                /* 角丸               */
+}
+.update input[type="checkbox"]:checked +label {
+  border-color   : #78bd78;             /* 選択タブの枠線     */
+}
+ /* === 表示する文字（ONのとき） ============================ */
+.update  input[type="checkbox"]:checked + label span:after{
+  content        : "ON";                /* 表示する文字       */
+  padding        : 0 36px 0 0;          /* 表示する位置       */
+  color          : #78bd78;             /* 文字色             */
+}
+ /* === 表示する文字（標準） ================================ */
+.update label span:after{
+  content        : "OFF";               /* 表示する文字       */
+  padding        : 0 0 0 36px;          /* 表示する位置       */
+  color          : #999999;             /* 文字色             */
+}
+ /* === 丸部分のSTYLE（標準） =============================== */
+.update #swImg {
+  position       : absolute;            /* 親要素からの相対位置*/
+  width          : 52px;                /* 丸の横幅           */
+  height         : 52px;                /* 丸の高さ           */
+  background     : #999999;             /* カーソルタブの背景 */
+  top            : 4px;                 /* 親要素からの位置   */
+  left           : 4px;                 /* 親要素からの位置   */
+  border-radius  : 26px;                /* 角丸               */
+  transition     : .2s;                 /* 滑らか変化         */
+}
+
+ /* === 丸部分のSTYLE（ONのとき） =========================== */
+.update input[type="checkbox"]:checked ~ #swImg {
+  transform      : translateX(90px);    /* 丸も右へ移動       */
+  background     : #78bd78;             /* カーソルタブの背景 */
+}
+
+.confirm_modal {
+  background-color: antiquewhite;
+  border: 10px solid blue;
+  width: 400px;
+  height: 200px;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.confirm_modal > .text {
+  text-align: center;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.btn {
+  border: solid red ;
+  text-align: center;
+  height: 50px;
+  width: 100px;
+}
+.overlay {
+  background-color: dimgray;
+  width:100%;
+  height: 120%;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:1;
+}
